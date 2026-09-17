@@ -1,5 +1,6 @@
 import { Global, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { PrismaService } from './services/prisma.service';
 
 @Global()
 @Module({
@@ -8,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
     envFilePath: ['.env.local', '.env'],
   })],
   controllers: [],
-  providers: [],
+  providers: [PrismaService],
+  exports: [PrismaService],
 })
-export class AppModule {}
+export class CommonConfigModule {}
