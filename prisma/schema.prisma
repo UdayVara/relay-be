@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AuthMethod {
+  Email
+  Google
+  Github
+}
+
+enum Role {
+  USER
+  Manager
+  Admin
+}
+
+enum Status {
+  Active
+  Inactive
+  Pending
+}
+
+model User {
+  id              String     @id
+  email           String     @unique
+  name            String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime
+  password        String
+  phone           String?
+  isEmailVerified Boolean    @default(false)
+  profileImage    String?
+  authMethod      AuthMethod @default(Email)
+  role            Role       @default(USER)
+  status          Status     @default(Active)
+}
