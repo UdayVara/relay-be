@@ -7,7 +7,8 @@ import { SigninUserDto } from './dto/signin.dto';
 
 
 const saltOrRounds = 10;
-const password = 'random_password';
+
+
 
 @Injectable()
 export class AuthService {
